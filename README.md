@@ -106,6 +106,7 @@ Indexes:
 **1. Common Operation**
 
 **Find books by title** 
+
 ```sql
 CREATE INDEX idx_book_title ON book(Title);
  ```
@@ -120,46 +121,46 @@ Query performance was analyzed using:
 
 **2. Loan Operations**
 
-*** Find loan for user**  
-```sql
-CREATE INDEX idx_loan_user ON loan(User_ID);
-```
-      
-Query performance was analyzed using:
-        
-```sql
-EXPLAIN SELECT * FROM loan WHERE User_ID = '8425';
-```
+* **Find loan for user**
+  ```sql
+  CREATE INDEX idx_loan_user ON loan(User_ID);
+  ```
 
-![Find user loan table](images/loan_user.png)
+  Query performance was analyzed using:
 
-*** Find loan for book**
-```sql
-CREATE INDEX idx_loan_book ON loan(Book_ID);
-```
-  
-Query performance was analyzed using:
-      
-```sql
-EXPLAIN SELECT * FROM loan WHERE Book_ID = '3115';
-```
+  ```sql
+  EXPLAIN SELECT * FROM loan WHERE User_ID = '8425';
+  ```
 
-![Find book loan table](images/loan_book.png)
+  ![Find user loan table](images/loan_user.png)
+
+* **Find loan for book**
+  ```sql
+  CREATE INDEX idx_loan_book ON loan(Book_ID);
+  ```
+  Query performance was analyzed using:
+
+  ```sql
+  EXPLAIN SELECT * FROM loan WHERE Book_ID = '3115';
+  ```
+
+  ![Find book loan table](images/loan_book.png)
   
-*** Find overdue loan**
-```sql
-CREATE INDEX idx_loan_return ON loan(Return_Date);
-```
-      
-Query performance was analyzed using:
-        
-```sql
-EXPLAIN SELECT * FROM loan WHERE Return_Date < NOW();
-```
+* **Find overdue loan**
+  ```sql
+  CREATE INDEX idx_loan_return ON loan(Return_Date);
+  ```
+
+  Query performance was analyzed using:
   
-![Find overdue loan table](images/overdue_loan.png)
+  ```sql
+  EXPLAIN SELECT * FROM loan WHERE Return_Date < NOW();
+  ```
+
+  ![Find overdue loan table](images/overdue_loan.png)
 
 **3. Reserve Operation**
+
 ```sql
 CREATE INDEX idx_reserve_book ON reserve(Book_ID);
 CREATE INDEX idx_reserve_user ON reserve(User_ID);
@@ -422,11 +423,3 @@ SHOW TRIGGERS;
 
 ---
 
-# How to Run
-
-1. Start Apache and MySQL in XAMPP
-2. Open phpMyAdmin
-3. Import the SQL files
-4. Import and execute the `library.sql` file
-
----
