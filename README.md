@@ -104,64 +104,66 @@ Indexes were created to improve query performance for common operations such as:
 Indexes:
 
 **1. Common Operation**
-   Find books by title
-    ```sql
-    CREATE INDEX idx_book_title ON book(Title);
-    ```
+Find books by title
+   
+```sql
+CREATE INDEX idx_book_title ON book(Title);
+ ```
     
-    Query performance was analyzed using:
+Query performance was analyzed using:
     
-    ```sql
-    EXPLAIN SELECT * FROM book WHERE Title = 'Bad.';
-    ```
+```sql
+ EXPLAIN SELECT * FROM book WHERE Title = 'Bad.';
+```
     
-    ![Find books table](images/common_operation.png)
+![Find books table](images/common_operation.png)
 
 **2. Loan Operations**
-    * Find loan for user  
-      ```sql
-      CREATE INDEX idx_loan_user ON loan(User_ID);
-      ```
+* Find loan for user  
+```sql
+CREATE INDEX idx_loan_user ON loan(User_ID);
+```
       
-      Query performance was analyzed using:
+Query performance was analyzed using:
         
-      ```sql
-      EXPLAIN SELECT * FROM loan WHERE User_ID = '8425';
-      ```
+```sql
+EXPLAIN SELECT * FROM loan WHERE User_ID = '8425';
+```
 
-      ![Find user loan table](images/loan_user.png)
+![Find user loan table](images/loan_user.png)
 
-    * Find loan for book
-      ```sql
-      CREATE INDEX idx_loan_book ON loan(Book_ID);
-      ```
+* Find loan for book
+```sql
+CREATE INDEX idx_loan_book ON loan(Book_ID);
+```
   
-      Query performance was analyzed using:
-        
-      ```sql
-      EXPLAIN SELECT * FROM loan WHERE Book_ID = '3115';
-      ```
-
-      ![Find book loan table](images/loan_book.png)
-  
-    * Find overdue loan
-      ```sql
-      CREATE INDEX idx_loan_return ON loan(Return_Date);
-      ```
+Query performance was analyzed using:
       
-      Query performance was analyzed using:
-        
-      ```sql
-      EXPLAIN SELECT * FROM loan WHERE Return_Date < NOW();
-      ```
+```sql
+EXPLAIN SELECT * FROM loan WHERE Book_ID = '3115';
+```
+
+![Find book loan table](images/loan_book.png)
   
-      ![Find overdue loan table](images/overdue_loan.png)
+* Find overdue loan
+```sql
+CREATE INDEX idx_loan_return ON loan(Return_Date);
+```
+      
+Query performance was analyzed using:
+        
+```sql
+EXPLAIN SELECT * FROM loan WHERE Return_Date < NOW();
+```
+  
+![Find overdue loan table](images/overdue_loan.png)
 
 **3. Reserve Operation**
-   ```sql
-   CREATE INDEX idx_reserve_book ON reserve(Book_ID);
-   CREATE INDEX idx_reserve_user ON reserve(User_ID);
-   ```      
+```sql
+CREATE INDEX idx_reserve_book ON reserve(Book_ID);
+CREATE INDEX idx_reserve_user ON reserve(User_ID);
+```      
+
 ---
 
 # Memory Management
