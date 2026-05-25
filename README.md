@@ -104,8 +104,8 @@ Indexes were created to improve query performance for common operations such as:
 Indexes:
 
 **1. Common Operation**
-Find books by title
-   
+
+**Find books by title** 
 ```sql
 CREATE INDEX idx_book_title ON book(Title);
  ```
@@ -119,7 +119,8 @@ Query performance was analyzed using:
 ![Find books table](images/common_operation.png)
 
 **2. Loan Operations**
-* Find loan for user  
+
+*** Find loan for user**  
 ```sql
 CREATE INDEX idx_loan_user ON loan(User_ID);
 ```
@@ -132,7 +133,7 @@ EXPLAIN SELECT * FROM loan WHERE User_ID = '8425';
 
 ![Find user loan table](images/loan_user.png)
 
-* Find loan for book
+*** Find loan for book**
 ```sql
 CREATE INDEX idx_loan_book ON loan(Book_ID);
 ```
@@ -145,7 +146,7 @@ EXPLAIN SELECT * FROM loan WHERE Book_ID = '3115';
 
 ![Find book loan table](images/loan_book.png)
   
-* Find overdue loan
+*** Find overdue loan**
 ```sql
 CREATE INDEX idx_loan_return ON loan(Return_Date);
 ```
