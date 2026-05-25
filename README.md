@@ -1,7 +1,6 @@
 # University Library Database System
 
-A university library database management system built using MySQL/MariaDB in XAMPP.  
-This project implements database design, indexing, transactions, security, triggers, stored procedures, and query optimization techniques.
+This project was completed as part of a final project in for Database Technology course. It is a university library database management system built using MySQL/MariaDB in XAMPP. This project implements database design, indexing, transactions, security, triggers, stored procedures, and query optimization techniques.
 
 ---
 
@@ -20,6 +19,9 @@ This project implements database design, indexing, transactions, security, trigg
 ---
 
 # Database Design
+
+## ERD
+![Library Database Schema ERD](images/ERD.png)
 
 ## Main Entities
 
@@ -51,6 +53,13 @@ This project implements database design, indexing, transactions, security, trigg
 - Reserve_ID
 - User_ID
 - Book_ID
+
+## Entities Relationship
+
+* **Author ➔ Book:** One-to-Many relationship linked via `Author_ID`.
+* **Book ➔ Loan / Reserve:** Many-to-One relationships linked via `Book_ID`.
+* **User ➔ Loan / Reserve:** Many-to-One relationships linked via `User_ID`.
+
 
 ---
 
@@ -237,8 +246,8 @@ university-library-db/
 │
 ├── README.md
 ├── library.sql
-├── DB Project.pdf
-└── library_erd.png
+└── Images/
+    ├── erd.png
 ```
 
 ---
